@@ -14,12 +14,14 @@ with (objPlayer)
 {
     vspeed=-vspeed;
     
-    jump = abs(jump) * global.grav;
-    jump2 = abs(jump2) * global.grav;
     if (abs(global.grav)==1) {
+        jump = abs(jump) * global.grav;
+        jump2 = abs(jump2) * global.grav;
         gravity_direction=270;
         gravity = abs(gravity) * global.grav;    
     } else {
+        jump = abs(jump) * global.grav/2;
+        jump2 = abs(jump2) * global.grav/2;
         gravity_direction=0;
         gravity = abs(gravity) * (global.grav/2);   
     }

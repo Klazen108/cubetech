@@ -172,7 +172,6 @@
     <instance objName="objBlock" x="320" y="1088" name="inst_208F3BB2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
-    <tile bgName="bAllTiles" x="160" y="1056" w="32" h="32" xo="32" yo="96" id="10002652" name="inst_5A3E57AF" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bAllTiles" x="160" y="1024" w="32" h="32" xo="32" yo="96" id="10002653" name="inst_EC250A64" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bAllTiles" x="160" y="992" w="32" h="32" xo="32" yo="96" id="10002654" name="inst_A713D04E" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bAllTiles" x="160" y="960" w="32" h="32" xo="32" yo="96" id="10002655" name="inst_36C70709" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

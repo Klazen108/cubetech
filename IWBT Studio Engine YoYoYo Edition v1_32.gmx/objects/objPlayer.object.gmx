@@ -242,8 +242,8 @@ if (!onPlatform)    //check if standing on a platform
 }
 else
 {
-    if (isVGrav()) if (!place_meeting(x,y+(4*global.grav),objPlatform)) {onPlatform = false;}
-    else if (!place_meeting(x+(4*global.grav/2),y,objPlatform)) {onPlatform = false;}
+    if isVGrav() {if (!place_meeting(x,y+(4*global.grav),objPlatform)) {onPlatform = false;}}
+    else {if (!place_meeting(x+(4*global.grav/2),y,objPlatform)) {onPlatform = false;}}
 }
 
 var slideBlockTouching;
@@ -257,8 +257,8 @@ else
     if (slideBlockTouching != noone)    //on a slide block, start moving with it
         vspeed += slideBlockTouching.v;
 
-if isVGrav() if (abs(vspeed) &gt; maxVspeed) {vspeed = sign(vspeed)*maxVspeed;} //check if moving vertically faster than max speed
-else if (abs(hspeed) &gt; maxVspeed) {hspeed = sign(hspeed)*maxVspeed;} //check if moving vertically faster than max speed
+if isVGrav() {if (abs(vspeed) &gt; maxVspeed) {vspeed = sign(vspeed)*maxVspeed;}} //check if moving vertically faster than max speed
+else {if (abs(hspeed) &gt; maxVspeed) {hspeed = sign(hspeed)*maxVspeed;}} //check if moving vertically faster than max speed
 
 if (!frozen)    //check if frozen before doing anything
 {
@@ -664,7 +664,7 @@ if isVGrav() {
     draw_sprite_ext(sprite_index,image_index,drawX,drawY,image_xscale*xScale,image_yscale*global.grav,image_angle,image_blend,image_alpha);
 } else {
     if (global.grav == -2)  drawX += 1;
-    draw_sprite_ext(sprite_index,image_index,drawX,drawY,image_xscale*global.grav/2,image_yscale*xScale,image_angle+90,image_blend,image_alpha);
+    draw_sprite_ext(sprite_index,image_index,drawX,drawY,image_xscale*(-1*xScale),image_yscale*global.grav/2,image_angle+90,image_blend,image_alpha);
 }
 
 //draw the player's hitbox

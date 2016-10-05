@@ -71,8 +71,8 @@ if (current_view != next_view) {
         switch (next_view) {
         case cview.A: yrot=-90; break;
         case cview.C: yrot=90; break;
-        case cview.E: xrot=90; break;
-        case cview.F: xrot=-90; break;
+        case cview.E: xrot=-90; break;
+        case cview.F: xrot=90; break;
         }
         break;
     case cview.E:
@@ -124,6 +124,23 @@ D: E-180 F+180
 E: A- 90 C+ 90 D+180
 F: A+ 90 C- 90 D-180
 */
+if (hold_player) {
+    with (objPlayer) {
+        frozen=true;
+        x=xprevious;
+        y=yprevious;
+        vspeed = other.p_vs;
+        hspeed = other.p_hs;
+    }
+    if (!switching) hold_player=false;
+} else {
+    with (objPlayer) frozen = false;
+}
+if (switching &amp;&amp; !hold_player) {
+    hold_player=true;
+    p_vs = objPlayer.vspeed;
+    p_hs = objPlayer.hspeed;
+}
 </string>
           </argument>
         </arguments>
@@ -166,6 +183,7 @@ m_transform=matrix_build(0,0,0,0,0,0,1,1,1);
 m_view_show=0;
 
 switching=false;
+hold_player=false;
 
 enum cview { A,B,C,D,E,F }
 if (objPlayer.x&lt;608) current_view=cview.A;
