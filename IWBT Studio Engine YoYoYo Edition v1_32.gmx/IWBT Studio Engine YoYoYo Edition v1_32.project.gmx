@@ -131,6 +131,9 @@
       <script>scripts\scrSetPlayerMask.gml</script>
       <script>scripts\scrKillPlayer.gml</script>
       <script>scripts\scrFlipGrav.gml</script>
+      <script>scripts\scrSetGrav.gml</script>
+      <script>scripts\scrRotateGravity.gml</script>
+      <script>scripts\isVGrav.gml</script>
     </scripts>
     <scripts name="world">
       <script>scripts\scrInitializeGlobals.gml</script>
@@ -315,6 +318,12 @@
     </rooms>
     <room>rooms\rTemplate</room>
   </rooms>
+  <constants number="4">
+    <constant name="G_DOWN">1</constant>
+    <constant name="G_UP">-1</constant>
+    <constant name="G_RIGHT">2</constant>
+    <constant name="G_LEFT">-2</constant>
+  </constants>
   <help>
     <rtf>help.rtf</rtf>
   </help>

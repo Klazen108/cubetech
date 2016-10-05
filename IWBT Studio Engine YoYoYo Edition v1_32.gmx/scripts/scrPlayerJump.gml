@@ -1,16 +1,31 @@
-if (place_meeting(x,y+(global.grav),objBlock) || onPlatform || place_meeting(x,y+(global.grav),objWater))
+var onBlock,onWater,onWater3;
+if isVGrav() {
+    onBlock = place_meeting(x,y+(global.grav),objBlock)
+    onWater = place_meeting(x,y+(global.grav),objWater)
+    onWater2 = place_meeting(x,y+(global.grav),objWater2)
+    onWater3 = place_meeting(x,y+(global.grav),objWater3)
+} else {
+    onBlock = place_meeting(x+(global.grav/2),y,objBlock)
+    onWater = place_meeting(x+(global.grav/2),y,objWater)
+    onWater2 = place_meeting(x+(global.grav/2),y,objWater2)
+    onWater3 = place_meeting(x+(global.grav/2),y,objWater3)
+}
+
+if (onBlock || onPlatform || onWater)
 {
-    vspeed = -jump;
+    if isVGrav() vspeed = -jump;
+    else hspeed = -jump;
     djump = 1;
     audio_play_sound(sndJump,0,false);
 }
-else if (djump == 1 || place_meeting(x,y+(global.grav),objWater2) || global.infJump)
+else if (djump == 1 || onWater2 || global.infJump)
 {
-    vspeed = -jump2;
+    if isVGrav() vspeed = -jump2;
+    else hspeed = -jump2
     sprite_index = sprPlayerJump;
     audio_play_sound(sndDJump,0,false);
     
-    if (!place_meeting(x,y+(global.grav),objWater3))
+    if (!onWater3)
         djump = 0;  //take away the player's double jump
     else
         djump = 1;  //replenish djump if touching water3

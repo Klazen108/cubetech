@@ -132,8 +132,12 @@ if (keyboard_check_direct(vk_space)) {
             <string>//check button presses
 var L = scrButtonCheck(global.leftButton);
 var R = scrButtonCheck(global.rightButton);
-
 var h = 0;
+
+var slipBlockTouching;
+var notOnBlock;
+var onVineL;
+var onVineR;
 
 if (!frozen)    //don't move if frozen
 {
@@ -143,12 +147,18 @@ if (!frozen)    //don't move if frozen
         h = -1;
 }
 
-var slipBlockTouching = instance_place(x,y+(4*global.grav),objSlipBlock);   //check if near a slip block
-
 //vine checks
-var notOnBlock = (place_free(x,y+(global.grav)));
-var onVineL = (place_meeting(x-1,y,objWalljumpL) &amp;&amp; notOnBlock);
-var onVineR = (place_meeting(x+1,y,objWalljumpR) &amp;&amp; notOnBlock);
+if isVGrav() {
+    slipBlockTouching = instance_place(x,y+(4*global.grav),objSlipBlock);   //check if near a slip block
+    notOnBlock = (place_free(x,y+(global.grav)));
+    onVineL = (place_meeting(x-1,y,objWalljumpL) &amp;&amp; notOnBlock);
+    onVineR = (place_meeting(x+1,y,objWalljumpR) &amp;&amp; notOnBlock);
+} else {
+    slipBlockTouching = instance_place(x+(4*global.grav/2),y,objSlipBlock);   //check if near a slip block
+    notOnBlock = (place_free(x+(global.grav/2),y));
+    onVineL = (place_meeting(x,y-1,objWalljumpL) &amp;&amp; notOnBlock);
+    onVineR = (place_meeting(x,y+1,objWalljumpR) &amp;&amp; notOnBlock);
+}
 
 if (h != 0)  //player is moving
 {
@@ -159,11 +169,17 @@ if (h != 0)  //player is moving
     if ((h == -1 &amp;&amp; !onVineR) || (h == 1 &amp;&amp; !onVineL))
     {
         if (slipBlockTouching == noone) //not touching a slip block, move immediately at full speed
-            hspeed = maxSpeed * h;
+            if isVGrav() hspeed = maxSpeed * h;
+            else vspeed = maxSpeed * h;
         else    //touching a slip block, use acceleration
         {
-            if ((h == 1 &amp;&amp; hspeed &lt; maxSpeed) || (h == -1 &amp;&amp; hspeed &gt; -maxSpeed))
-                hspeed += (slipBlockTouching.slip) * h;
+            if isVGrav() {
+                if ((h == 1 &amp;&amp; hspeed &lt; maxSpeed) || (h == -1 &amp;&amp; hspeed &gt; -maxSpeed))
+                    hspeed += (slipBlockTouching.slip) * h;
+            } else {
+                if ((h == 1 &amp;&amp; vspeed &lt; maxSpeed) || (h == -1 &amp;&amp; vspeed &gt; -maxSpeed))
+                    vspeed += (slipBlockTouching.slip) * h;
+            }
         }
         
         sprite_index = sprPlayerRunning;
@@ -173,22 +189,39 @@ if (h != 0)  //player is moving
 else    //player is not moving
 {
     if (slipBlockTouching == noone) //not touching a slip block, stop immediately
-        hspeed = 0;
+        if isVGrav() hspeed = 0; else vspeed = 0;
     else    //touching a slip block, slow down
     {
-        if (hspeed &gt; 0)
-        {
-            hspeed -= slipBlockTouching.slip;
-            
-            if (hspeed &lt;= 0)
-                hspeed = 0;
-        }
-        else if (hspeed &lt; 0)
-        {
-            hspeed += slipBlockTouching.slip;
-            
-            if (hspeed &gt;= 0)
-                hspeed = 0;
+        if isVGrav() {
+            if (hspeed &gt; 0)
+            {
+                hspeed -= slipBlockTouching.slip;
+                
+                if (hspeed &lt;= 0)
+                    hspeed = 0;
+            }
+            else if (hspeed &lt; 0)
+            {
+                hspeed += slipBlockTouching.slip;
+                
+                if (hspeed &gt;= 0)
+                    hspeed = 0;
+            }
+        } else {
+            if (vspeed &gt; 0)
+            {
+                vspeed -= slipBlockTouching.slip;
+                
+                if (vspeed &lt;= 0)
+                    vspeed = 0;
+            }
+            else if (vspeed &lt; 0)
+            {
+                vspeed += slipBlockTouching.slip;
+                
+                if (vspeed &gt;= 0)
+                    vspeed = 0;
+            }
         }
     }
   
@@ -199,20 +232,33 @@ else    //player is not moving
 
 if (!onPlatform)    //check if standing on a platform
 {
-    if((vspeed * global.grav) &lt; -0.05) {sprite_index = sprPlayerJump;}
-    else if((vspeed * global.grav) &gt; 0.05) {sprite_index = sprPlayerFall;}
+    if (isVGrav()) {
+        if((vspeed * global.grav) &lt; -0.05) {sprite_index = sprPlayerJump;}
+        else if((vspeed * global.grav) &gt; 0.05) {sprite_index = sprPlayerFall;}
+    } else {
+        if((hspeed * global.grav/2) &lt; -0.05) {sprite_index = sprPlayerJump;}
+        else if((hspeed * global.grav/2) &gt; 0.05) {sprite_index = sprPlayerFall;}
+    }
 }
 else
 {
-    if (!place_meeting(x,y+(4*global.grav),objPlatform)) {onPlatform = false;}
+    if (isVGrav()) if (!place_meeting(x,y+(4*global.grav),objPlatform)) {onPlatform = false;}
+    else if (!place_meeting(x+(4*global.grav/2),y,objPlatform)) {onPlatform = false;}
 }
 
-var slideBlockTouching = instance_place(x,y+(global.grav),objSlideBlock);   //check if on a slide block
+var slideBlockTouching;
+if isVGrav() slideBlockTouching = instance_place(x,y+global.grav,objSlideBlock);   //check if on a slide block
+else slideBlockTouching = instance_place(x+global.grav/2,y,objSlideBlock);   //check if on a slide block
 
-if (slideBlockTouching != noone)    //on a slide block, start moving with it
-    hspeed += slideBlockTouching.h;
+if isVGrav()
+    if (slideBlockTouching != noone)    //on a slide block, start moving with it
+        hspeed += slideBlockTouching.h;
+else 
+    if (slideBlockTouching != noone)    //on a slide block, start moving with it
+        vspeed += slideBlockTouching.v;
 
-if (abs(vspeed) &gt; maxVspeed) {vspeed = sign(vspeed)*maxVspeed;} //check if moving vertically faster than max speed
+if isVGrav() if (abs(vspeed) &gt; maxVspeed) {vspeed = sign(vspeed)*maxVspeed;} //check if moving vertically faster than max speed
+else if (abs(hspeed) &gt; maxVspeed) {hspeed = sign(hspeed)*maxVspeed;} //check if moving vertically faster than max speed
 
 if (!frozen)    //check if frozen before doing anything
 {
@@ -225,13 +271,12 @@ if (!frozen)    //check if frozen before doing anything
     if (scrButtonCheckPressed(global.suicideButton))
         scrKillPlayer();
 }
-
+/*
 if (global.adAlign &amp;&amp; place_meeting(x,y+(global.grav),objBlock) &amp;&amp; !frozen)  // A/D align
 {
     if (scrButtonCheckPressed(global.alignLeftButton)) {hspeed -= 1;}
     if (scrButtonCheckPressed(global.alignRightButton)) {hspeed += 1;}
-}
-
+}*/
 
 //walljumps
 
@@ -242,7 +287,8 @@ if (onVineL || onVineR)
     else
         xScale = 1;
     
-    vspeed = 2 * global.grav;
+    if isVGrav() vspeed = 2 * global.grav;
+    else hspeed = 2 * global.grav/2;
     sprite_index = sprPlayerSliding;
     image_speed = 1/2;
     
@@ -251,21 +297,18 @@ if (onVineL || onVineR)
     {
         if (scrButtonCheck(global.jumpButton))  //jumping off vine
         {
-            if (onVineR)
-                hspeed = -15;
-            else
-                hspeed = 15;
+            if (onVineR) {if isVGrav() hspeed = -15; else vspeed = -15}
+            else {if isVGrav() hspeed = 15; else vspeed = 15}
             
-            vspeed = -9 * global.grav;
+            if isVGrav() vspeed = -9 * global.grav;
+            else hspeed = -9 * global.grav/2;
             audio_play_sound(sndWallJump,0,false);
             sprite_index = sprPlayerJump;
         }
         else    //moving off vine
         {
-            if (onVineR)
-                hspeed = -3;
-            else
-                hspeed = 3;
+            if (onVineR) {if isVGrav() hspeed = -3; else vspeed = -3;}
+            else {if isVGrav() hspeed = 3; else vspeed = 3;}
             
             sprite_index = sprPlayerFall;
         }
@@ -273,7 +316,7 @@ if (onVineL || onVineR)
 }
 
 //slopes
-
+/*
 if (instance_exists(objSlope) &amp;&amp; hspeed != 0)
 {
     var moveLimit = abs(hspeed);    //sets how high/low the player can go to snap onto a slope, this can be increased to make the player able to run over steeper slopes (ie setting it to abs(hspeed)*2 allows the player to run over slopes twice as steep)
@@ -428,7 +471,7 @@ if (instance_exists(objSlope) &amp;&amp; hspeed != 0)
     //set xprevious/yprevious coordinates for future solid collisions
     xprevious = x;
     yprevious = y;
-}
+}*/
 </string>
           </argument>
         </arguments>
@@ -488,7 +531,7 @@ if (instance_exists(objSlope) &amp;&amp; hspeed != 0)
         djump = 1;
     }
 }
-else    //flipped
+else if (global.grav == -1) //flipped
 {
     if (y-vspeed/2 &gt;= other.y+other.sprite_height-1)
     {
@@ -524,37 +567,71 @@ else    //flipped
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (!place_free(x+hspeed,y))
-{
-    if (global.grav == 1)   //normal
+            <string>if isVGrav() {
+    if (!place_free(x+hspeed,y))
     {
-        if(hspeed &lt;= 0){move_contact_solid(180,abs(hspeed));}
-        if(hspeed &gt; 0){move_contact_solid(0,abs(hspeed));}
+        if (global.grav == 1)      //normal
+        {
+            if(hspeed &lt;= 0){move_contact_solid(180,abs(hspeed));}
+            if(hspeed &gt; 0){move_contact_solid(0,abs(hspeed));}
+        }
+        else if (global.grav == -1)//flipped
+        {
+            if(hspeed &lt; 0){move_contact_solid(180,abs(hspeed));}
+            if(hspeed &gt;= 0){move_contact_solid(0,abs(hspeed));}
+        }
+        hspeed = 0;
     }
-    else    //flipped
+     
+    if (!place_free(x,y+vspeed))
     {
-        if(hspeed &lt; 0){move_contact_solid(180,abs(hspeed));}
-        if(hspeed &gt;= 0){move_contact_solid(0,abs(hspeed));}
+        if (global.grav == 1)      //normal
+        {
+            if(vspeed &lt;= 0){move_contact_solid(90,abs(vspeed));}
+            if(vspeed &gt; 0){move_contact_solid(270,abs(vspeed));djump=1;}
+        }
+        else if (global.grav == -1)//flipped
+        {
+            if(vspeed &lt;= 0){move_contact_solid(90,abs(vspeed));djump=1;}
+            if(vspeed &gt; 0){move_contact_solid(270,abs(vspeed));}
+        }
+        vspeed = 0;
     }
-    hspeed = 0;
+    
+    if (!place_free(x+hspeed,y+vspeed)) {hspeed = 0;}
+} else {
+    if (!place_free(x,y+vspeed))
+    {
+        if (global.grav == 2)      //normal
+        {
+            if(vspeed &lt;= 0){move_contact_solid(90,abs(vspeed));}
+            if(vspeed &gt; 0){move_contact_solid(270,abs(vspeed));}
+        }
+        else if (global.grav == -2)//flipped
+        {
+            if(vspeed &lt; 0){move_contact_solid(90,abs(vspeed));}
+            if(vspeed &gt;= 0){move_contact_solid(270,abs(vspeed));}
+        }
+        vspeed = 0;
+    }
+     
+    if (!place_free(x+hspeed,y))
+    {
+        if (global.grav == 2)      //normal
+        {
+            if(hspeed &lt;= 0){move_contact_solid(180,abs(hspeed));}
+            if(hspeed &gt; 0){move_contact_solid(0,abs(hspeed));djump=1;}
+        }
+        else if (global.grav == -2)//flipped
+        {
+            if(hspeed &lt;= 0){move_contact_solid(180,abs(hspeed));djump=1;}
+            if(hspeed &gt; 0){move_contact_solid(0,abs(hspeed));}
+        }
+        hspeed = 0;
+    }
+    
+    if (!place_free(x+hspeed,y+vspeed)) {vspeed = 0;}
 }
- 
-if (!place_free(x,y+vspeed))
-{
-    if (global.grav == 1)   //normal
-    {
-        if(vspeed &lt;= 0){move_contact_solid(90,abs(vspeed));}
-        if(vspeed &gt; 0){move_contact_solid(270,abs(vspeed));djump=1;}
-    }
-    else    //flipped
-    {
-        if(vspeed &lt;= 0){move_contact_solid(90,abs(vspeed));djump=1;}
-        if(vspeed &gt; 0){move_contact_solid(270,abs(vspeed));}
-    }
-    vspeed = 0;
-}
-
-if (!place_free(x+hspeed,y+vspeed)) {hspeed = 0;}
 </string>
           </argument>
         </arguments>
@@ -582,19 +659,109 @@ if (!place_free(x+hspeed,y+vspeed)) {hspeed = 0;}
 var drawX = x;
 var drawY = y;
 
-if (global.grav == -1)      //need to draw the player a pixel off in the y-axis when flipped for some reason
-    drawY += 1;
-
-draw_sprite_ext(sprite_index,image_index,drawX,drawY,image_xscale*xScale,image_yscale*global.grav,image_angle,image_blend,image_alpha);
-//screenwrap versions
-draw_sprite_ext(sprite_index,image_index,drawX-room_width,drawY,image_xscale*xScale,image_yscale*global.grav,image_angle,image_blend,image_alpha);
-draw_sprite_ext(sprite_index,image_index,drawX+room_width,drawY,image_xscale*xScale,image_yscale*global.grav,image_angle,image_blend,image_alpha);
-draw_sprite_ext(sprite_index,image_index,drawX,drawY-room_height,image_xscale*xScale,image_yscale*global.grav,image_angle,image_blend,image_alpha);
-draw_sprite_ext(sprite_index,image_index,drawX,drawY+room_height,image_xscale*xScale,image_yscale*global.grav,image_angle,image_blend,image_alpha);
+if isVGrav() {
+    if (global.grav == -1)  drawY += 1;
+    draw_sprite_ext(sprite_index,image_index,drawX,drawY,image_xscale*xScale,image_yscale*global.grav,image_angle,image_blend,image_alpha);
+} else {
+    if (global.grav == -2)  drawX += 1;
+    draw_sprite_ext(sprite_index,image_index,drawX,drawY,image_xscale*global.grav/2,image_yscale*xScale,image_angle+90,image_blend,image_alpha);
+}
 
 //draw the player's hitbox
 if (global.showHitbox)
     draw_sprite_ext(mask_index,image_index,x,y,image_xscale,image_yscale,image_angle,image_blend,image_alpha*0.8);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="52">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>scrSetGrav(scrRotateGravity(global.grav,270));
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="51">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>scrSetGrav(scrRotateGravity(global.grav,180));
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="50">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>scrSetGrav(scrRotateGravity(global.grav,90));
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="49">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>scrSetGrav(scrRotateGravity(global.grav,0));
 </string>
           </argument>
         </arguments>
