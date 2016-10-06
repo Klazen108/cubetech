@@ -12,6 +12,8 @@ global.savePlayerX = 0;
 global.savePlayerY = 0;
 global.grav = 1;
 global.saveGrav = 1;
+global.invert = 0;
+global.saveInvert = false;
 
 for (var i = global.secretItemTotal-1; i >= 0; i--)
 {

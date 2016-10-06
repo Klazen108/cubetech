@@ -19,6 +19,7 @@ with (objPlayer)
         jump2 = abs(jump2) * global.grav;
         gravity_direction=270;
         gravity = abs(gravity) * global.grav;    
+        global.invert = (global.grav==-1);
     } else {
         jump = abs(jump) * global.grav/2;
         jump2 = abs(jump2) * global.grav/2;

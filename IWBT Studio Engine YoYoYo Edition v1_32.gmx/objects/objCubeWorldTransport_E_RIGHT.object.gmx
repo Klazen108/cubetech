@@ -25,19 +25,17 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>xrel=0;
+            <string>xrel=16;
 yrel=0;
-invert_x=false;
-invert_y=false;
+invert_y=true;
 switch_dir=sdir.UP
 target_x=0;
 target_y=0;
 
 
-yrel=32;
-invert_x=true;
-target_x=640;
-target_y=0;
+invert_x=false;
+target_x=1248;
+target_y=608;
 switch_dir=sdir.UP;
 </string>
           </argument>
@@ -61,14 +59,15 @@ switch_dir=sdir.UP;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (other.y&lt;y+yrel) {
+            <string>if (other.x&gt;x+xrel) {
     switch_y=other.y-(y+yrel);
     switch_x=other.x-(x+xrel);
     if (invert_x) switch_x=sprite_width-switch_x;
-    other.y=target_y-switch_y
-    other.x=target_x+switch_x;
+    if (invert_y) switch_y=sprite_height-switch_y;
+    other.y=target_y-switch_x
+    other.x=target_x+switch_y;
     //scrFlipGrav();
-    scrSetGrav(scrRotateGravity(global.grav,180));
+    scrSetGrav(scrRotateGravity(global.grav,-90));
 }
 </string>
           </argument>

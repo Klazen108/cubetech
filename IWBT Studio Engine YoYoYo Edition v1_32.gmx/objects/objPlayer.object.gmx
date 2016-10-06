@@ -130,8 +130,11 @@ if (keyboard_check_direct(vk_space)) {
           <argument>
             <kind>1</kind>
             <string>//check button presses
-var L = scrButtonCheck(global.leftButton);
-var R = scrButtonCheck(global.rightButton);
+var L, R;
+if (!global.invert) L = scrButtonCheck(global.leftButton);
+else                L = scrButtonCheck(global.rightButton);
+if (!global.invert) R = scrButtonCheck(global.rightButton);
+else                R = scrButtonCheck(global.leftButton);
 var h = 0;
 
 var slipBlockTouching;

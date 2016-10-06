@@ -35,6 +35,8 @@
     <sprites name="player">
       <sprite>sprites\sprPlayerMask</sprite>
       <sprite>sprites\sprPlayerMaskFlip</sprite>
+      <sprite>sprites\sprPlayerMaskLeft</sprite>
+      <sprite>sprites\sprPlayerMaskRight</sprite>
       <sprite>sprites\sprPlayerIdle</sprite>
       <sprite>sprites\sprPlayerJump</sprite>
       <sprite>sprites\sprPlayerFall</sprite>
@@ -295,6 +297,7 @@
     <object>objects\object92</object>
     <object>objects\objCubeWorldTransport_E_TOP</object>
     <object>objects\objCubeWorldTransport_D_TOP</object>
+    <object>objects\objCubeWorldTransport_E_RIGHT</object>
   </objects>
   <rooms name="rooms">
     <rooms name="init">

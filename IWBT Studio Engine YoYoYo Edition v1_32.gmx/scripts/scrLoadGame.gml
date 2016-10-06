@@ -37,6 +37,7 @@ if (loadFile)
         global.savePlayerX = ds_map_find_value(saveMap,"savePlayerX");
         global.savePlayerY = ds_map_find_value(saveMap,"savePlayerY");
         global.saveGrav = ds_map_find_value(saveMap,"saveGrav");
+        global.saveInvert = ds_map_find_value(saveMap,"saveInvert");
         
         if (!is_undefined(global.saveRoom))   //check if the saved room loaded properly
         {
@@ -105,6 +106,7 @@ global.noPause = false;     //disable no pause mode
 global.autosave = false;    //disable autosaving since we're loading the game
 
 global.grav = global.saveGrav;
+global.invert = global.saveInvert;
 
 for (var i = 0; i < global.secretItemTotal; i++)
 {

@@ -47,48 +47,48 @@ if (current_view != next_view) {
         switch (next_view) {
         case cview.B: yrot=-90; break;
         case cview.D: yrot=90; break;
-        case cview.E: xrot=90; break;
-        case cview.F: xrot=-90; break;
+        case cview.E: zrot=90; break;
+        case cview.F: zrot=-90; break;
         }
         break;
     case cview.B:
         switch (next_view) {
         case cview.C: yrot=-90; break;
         case cview.A: yrot=90; break;
-        case cview.E: xrot=90; break;
-        case cview.F: xrot=-90; break;
+        case cview.E: zrot=90; break;
+        case cview.F: zrot=-90; break;
         }
         break;
     case cview.C:
         switch (next_view) {
         case cview.D: yrot=-90; break;
         case cview.B: yrot=90; break;
-        case cview.E: xrot=90; break;
-        case cview.F: xrot=-90; break;
+        case cview.E: zrot=90; break;
+        case cview.F: zrot=-90; break;
         }
         break;
     case cview.D:
         switch (next_view) {
         case cview.A: yrot=-90; break;
         case cview.C: yrot=90; break;
-        case cview.E: xrot=-90; break;
-        case cview.F: xrot=90; break;
+        case cview.E: zrot=-90; break;
+        case cview.F: zrot=90; break;
         }
         break;
     case cview.E:
         switch (next_view) {
-        case cview.A: yrot=-90; break;
-        case cview.C: yrot=90; break;
-        case cview.D: xrot=90; break;
-        case cview.B: xrot=-90; break;
+        case cview.A: xrot=-90; break;
+        case cview.C: xrot=90; break;
+        case cview.D: zrot=90; break;
+        case cview.B: zrot=-90; break;
         }
         break;
     case cview.F:
         switch (next_view) {
-        case cview.A: yrot=-90; break;
-        case cview.C: yrot=90; break;
-        case cview.B: xrot=90; break;
-        case cview.D: xrot=-90; break;
+        case cview.A: xrot=-90; break;
+        case cview.C: xrot=90; break;
+        case cview.B: zrot=90; break;
+        case cview.D: zrot=-90; break;
         }
         break;
     }
@@ -102,17 +102,21 @@ if (switching) {
     else xrot_current=xrot;
     if (abs(yrot_current)&lt;abs(yrot)) yrot_current+=2*sign(yrot)
     else yrot_current=yrot;
+    if (abs(zrot_current)&lt;abs(zrot)) zrot_current+=2*sign(zrot)
+    else zrot_current=zrot;
     
-    m_transform=matrix_build(0,0,0,0,yrot_current,xrot_current,1,1,1);
-    m_view_show = matrix_multiply(m_transform,m_view) //set current show view to base view + transform
-    if (xrot==xrot_current &amp;&amp; yrot==yrot_current) { //if we're done rotating
+    m_transform=matrix_build(0,0,0,xrot_current,yrot_current,zrot_current,1,1,1);
+    m_view_show = matrix_multiply(m_transform,m_view)//matrix_multiply(m_transform,m_view) //set current show view to base view + transform
+    if (xrot==xrot_current &amp;&amp; yrot==yrot_current &amp;&amp; zrot==zrot_current) { //if we're done rotating
         switching=false;
         m_view=m_view_show; //save the current show view as the base view
         
         xrot=0; //reset the rotation variables for next time
         yrot=0;
+        zrot=0;
         xrot_current=0; //reset the rotation variables for next time
         yrot_current=0;
+        zrot_current=0;
     }
 }
 
@@ -197,8 +201,10 @@ else if (objPlayer.x&gt;=1824) current_view=cview.D;
 
 xrot=0;
 yrot=0;
+zrot=0;
 xrot_current=0;
 yrot_current=0;
+zrot_current=0;
 
 view_visible[0]=true;
 view_visible[1]=true;

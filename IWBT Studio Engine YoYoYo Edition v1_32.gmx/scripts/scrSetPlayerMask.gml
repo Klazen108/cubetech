@@ -7,7 +7,7 @@ if isVGrav() {
         mask_index = sprPlayerMaskFlip;
 } else {
     if (global.grav == 2)
-        mask_index = sprPlayerMask; //right
+        mask_index = sprPlayerMaskRight; //right
     else
-        mask_index = sprPlayerMaskFlip; //left
+        mask_index = sprPlayerMaskLeft; //left
 }
