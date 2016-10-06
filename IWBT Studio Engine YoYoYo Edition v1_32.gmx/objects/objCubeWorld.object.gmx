@@ -63,8 +63,8 @@ if (current_view != next_view) {
         switch (next_view) {
         case cview.D: yrot=-90; break;
         case cview.B: yrot=90; break;
-        case cview.E: zrot=90; break;
-        case cview.F: zrot=-90; break;
+        case cview.E: xrot=-90; break;
+        case cview.F: xrot=90; break;
         }
         break;
     case cview.D:
@@ -254,11 +254,11 @@ d3d_transform_set_identity();
 //d3d_transform_add_rotation_x(thetaX);
 
 if (!m_view_set) {
-    m_view=matrix_get(matrix_view);
+    m_view=matrix_get(matrix_world);
     m_view_show=m_view;
     m_view_set=true;
 }
-matrix_set(matrix_view,m_view_show);
+matrix_set(matrix_world,m_view_show);
 
 //d3d_draw_block(-d,-d,-d,+d,+d,d,-1,1,1);
 
