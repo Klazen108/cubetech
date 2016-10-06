@@ -185,6 +185,16 @@
     <instance objName="objBlock" x="1440" y="640" name="inst_5750068A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objCubeWorldTransport_C_TOP" x="1248" y="576" name="inst_440B3907" locked="0" code="" scaleX="17" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="objBlock" x="1152" y="384" name="inst_648389D8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objCubeWorldTransport_A_TOP" x="32" y="576" name="inst_BBBF90B9" locked="0" code="" scaleX="17" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objCubeWorldTransport_E_LEFT" x="576" y="32" name="inst_7D74CCFF" locked="0" code="" scaleX="2" scaleY="17" colour="4294967295" rotation="0"/>
+    <instance objName="objBlock" x="896" y="512" name="inst_A252C917" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objBlock" x="768" y="512" name="inst_0BA9E984" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objBlock" x="640" y="480" name="inst_DFA53EFA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objBlock" x="512" y="672" name="inst_40B2B1D4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objBlock" x="512" y="704" name="inst_8670D2A0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objBlock" x="512" y="736" name="inst_B03D60A9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objBlock" x="512" y="800" name="inst_2E3602F7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objBlock" x="512" y="768" name="inst_BB56C0B1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bAllTiles" x="160" y="1024" w="32" h="32" xo="32" yo="96" id="10002653" name="inst_EC250A64" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -466,6 +476,14 @@
     <tile bgName="bAllTiles" x="1312" y="992" w="32" h="32" xo="96" yo="96" id="10003153" name="inst_446E4907" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bAllTiles" x="1280" y="1088" w="32" h="32" xo="96" yo="96" id="10003154" name="inst_90113017" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bAllTiles" x="1152" y="384" w="32" h="32" xo="96" yo="96" id="10003155" name="inst_8F61CF85" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bAllTiles" x="640" y="480" w="32" h="32" xo="96" yo="96" id="10003156" name="inst_05818E2F" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bAllTiles" x="768" y="512" w="32" h="32" xo="96" yo="96" id="10003157" name="inst_5E4DE0F9" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bAllTiles" x="896" y="512" w="32" h="32" xo="96" yo="96" id="10003158" name="inst_E8D61749" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bAllTiles" x="512" y="672" w="32" h="32" xo="96" yo="96" id="10003159" name="inst_295B041D" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bAllTiles" x="512" y="704" w="32" h="32" xo="96" yo="96" id="10003160" name="inst_61E3620A" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bAllTiles" x="512" y="736" w="32" h="32" xo="96" yo="96" id="10003161" name="inst_B44BE7DD" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bAllTiles" x="512" y="768" w="32" h="32" xo="96" yo="96" id="10003162" name="inst_0B347B68" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bAllTiles" x="512" y="800" w="32" h="32" xo="96" yo="96" id="10003163" name="inst_C803F58D" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
   </tiles>
   <PhysicsWorld>0</PhysicsWorld>
   <PhysicsWorldTop>0</PhysicsWorldTop>

@@ -25,16 +25,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>yrel=32;
-xrel=0;
-invert_y=false;
+            <string>xrel=0;
+yrel=32;
+invert_y=true;
 switch_dir=sdir.UP
 target_x=0;
 target_y=0;
 
 
-invert_x=true;
-target_x=1216;
+invert_x=false;
+target_x=608;
 target_y=32;
 switch_dir=sdir.UP;
 </string>
@@ -66,7 +66,8 @@ switch_dir=sdir.UP;
     if (invert_y) switch_y=sprite_height-switch_y;
     other.y=target_y+switch_x
     other.x=target_x+switch_y;
-    scrSetGrav(scrRotateGravity(global.grav,90));
+    scrSetGrav(scrRotateGravity(global.grav,-90));
+    show_debug_message("A TOP: ("+string(other.x)+","+string(other.y)+")")
 }
 </string>
           </argument>
