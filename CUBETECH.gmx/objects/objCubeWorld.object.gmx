@@ -276,9 +276,10 @@ draw_set_alpha(1);
 draw_rectangle(0,0,800,608,0);
 
 d3d_start(); 
-//d3d_set_lighting(true); 
-//d3d_light_define_direction(1,1,0.5,0,c_white);
-//d3d_light_enable(1,true);
+d3d_set_lighting(true); 
+d3d_light_define_ambient(make_color_rgb(0,0,0));
+d3d_light_define_direction(1,0,0,1,c_white);
+d3d_light_enable(1,true);
 
 d3d_set_culling(true); 
 d3d_set_perspective(true);
@@ -286,8 +287,6 @@ d3d_set_projection_ext(0, 0, -dist, 0, 0, 0, 0, 1, 0,45,400/304,1,6000);
 
 draw_set_color(c_white);
 d3d_transform_set_identity();
-//d3d_transform_add_rotation_y(thetaY);
-//d3d_transform_add_rotation_x(thetaX);
 
 if (!m_view_set) {
     m_view=matrix_get(matrix_world);
@@ -298,8 +297,6 @@ if (!m_view_set) {
 }
 matrix_set(matrix_world,m_view_show);
 
-//d3d_draw_block(-d,-d,-d,+d,+d,d,-1,1,1);
-
 var d=w/2;
 
 //assume:
@@ -309,52 +306,53 @@ var d=w/2;
 
 //A
 d3d_primitive_begin_texture(pr_trianglefan,surface_get_texture(surfA));
-d3d_vertex_texture(-d,+d,-d,0,0);
-d3d_vertex_texture(+d,+d,-d,1,0);
-d3d_vertex_texture(+d,-d,-d,1,1);
-d3d_vertex_texture(-d,-d,-d,0,1);
+d3d_vertex_normal_texture(-d,+d,-d,0,0,-1,0,0);
+d3d_vertex_normal_texture(+d,+d,-d,0,0,-1,1,0);
+d3d_vertex_normal_texture(+d,-d,-d,0,0,-1,1,1);
+d3d_vertex_normal_texture(-d,-d,-d,0,0,-1,0,1);
 d3d_primitive_end();
 
 //B
 d3d_primitive_begin_texture(pr_trianglefan,surface_get_texture(surfB));
-d3d_vertex_texture(+d,+d,-d,0,0);
-d3d_vertex_texture(+d,+d,+d,1,0);
-d3d_vertex_texture(+d,-d,+d,1,1);
-d3d_vertex_texture(+d,-d,-d,0,1);
+d3d_vertex_normal_texture(+d,+d,-d,1,0,0,0,0);
+d3d_vertex_normal_texture(+d,+d,+d,1,0,0,1,0);
+d3d_vertex_normal_texture(+d,-d,+d,1,0,0,1,1);
+d3d_vertex_normal_texture(+d,-d,-d,1,0,0,0,1);
 d3d_primitive_end();
 
 //C
 d3d_primitive_begin_texture(pr_trianglefan,surface_get_texture(surfC));
-d3d_vertex_texture(+d,+d,+d,0,0);
-d3d_vertex_texture(-d,+d,+d,1,0);
-d3d_vertex_texture(-d,-d,+d,1,1);
-d3d_vertex_texture(+d,-d,+d,0,1);
+d3d_vertex_normal_texture(+d,+d,+d,0,0,1,0,0);
+d3d_vertex_normal_texture(-d,+d,+d,0,0,1,1,0);
+d3d_vertex_normal_texture(-d,-d,+d,0,0,1,1,1);
+d3d_vertex_normal_texture(+d,-d,+d,0,0,1,0,1);
 d3d_primitive_end();
 
 //D
 d3d_primitive_begin_texture(pr_trianglefan,surface_get_texture(surfD));
-d3d_vertex_texture(-d,+d,+d,0,0);
-d3d_vertex_texture(-d,+d,-d,1,0);
-d3d_vertex_texture(-d,-d,-d,1,1);
-d3d_vertex_texture(-d,-d,+d,0,1);
+d3d_vertex_normal_texture(-d,+d,+d,-1,0,0,0,0);
+d3d_vertex_normal_texture(-d,+d,-d,-1,0,0,1,0);
+d3d_vertex_normal_texture(-d,-d,-d,-1,0,0,1,1);
+d3d_vertex_normal_texture(-d,-d,+d,-1,0,0,0,1);
 d3d_primitive_end();
 
 //E
 d3d_primitive_begin_texture(pr_trianglefan,surface_get_texture(surfE));
-d3d_vertex_texture(-d,+d,-d,0,0);
-d3d_vertex_texture(-d,+d,+d,1,0);
-d3d_vertex_texture(+d,+d,+d,1,1);
-d3d_vertex_texture(+d,+d,-d,0,1);
+d3d_vertex_normal_texture(-d,+d,-d,0,1,0,0,0);
+d3d_vertex_normal_texture(-d,+d,+d,0,1,0,1,0);
+d3d_vertex_normal_texture(+d,+d,+d,0,1,0,1,1);
+d3d_vertex_normal_texture(+d,+d,-d,0,1,0,0,1);
 d3d_primitive_end();
 
 //F
 d3d_primitive_begin_texture(pr_trianglefan,surface_get_texture(surfF));
-d3d_vertex_texture(+d,-d,-d,0,0);
-d3d_vertex_texture(+d,-d,+d,1,0);
-d3d_vertex_texture(-d,-d,+d,1,1);
-d3d_vertex_texture(-d,-d,-d,0,1);
+d3d_vertex_normal_texture(+d,-d,-d,0,-1,0,0,0);
+d3d_vertex_normal_texture(+d,-d,+d,0,-1,0,1,0);
+d3d_vertex_normal_texture(-d,-d,+d,0,-1,0,1,1);
+d3d_vertex_normal_texture(-d,-d,-d,0,-1,0,0,1);
 d3d_primitive_end();
 
+d3d_set_lighting(false); 
 d3d_set_culling(false); 
 d3d_set_perspective(false);
 d3d_set_projection_ortho(0,0,800,608,0);

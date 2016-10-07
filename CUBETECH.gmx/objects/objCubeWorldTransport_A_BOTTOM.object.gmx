@@ -67,7 +67,6 @@ switch_dir=sdir.UP;
     other.y=target_y+switch_x
     other.x=target_x-switch_y;
     scrSetGrav(scrRotateGravity(global.grav,90));
-    show_debug_message("A BOTTOM: ("+string(other.x)+","+string(other.y)+")")
 }
 </string>
           </argument>
