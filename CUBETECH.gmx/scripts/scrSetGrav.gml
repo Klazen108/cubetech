@@ -32,10 +32,10 @@ with (objPlayer)
     switch (old_grav) {
     case G_DOWN:
         switch (new_grav) {
-        case G_DOWN : vspeed= vspeed; break;
-        case G_UP   : vspeed=-vspeed; break;
-        case G_LEFT : hspeed=-vspeed; break;
-        case G_RIGHT: hspeed= vspeed; break;
+        case G_DOWN : vspeed= vspeed; y=ceil (y); break;
+        case G_UP   : vspeed=-vspeed; y=floor(y); break;
+        case G_LEFT : hspeed=-vspeed; x=floor(x); break;
+        case G_RIGHT: hspeed= vspeed; x=ceil (x); break;
         }
         break;
     case G_UP:
@@ -63,5 +63,26 @@ with (objPlayer)
         }
         break;
     }
+    
+    //if the player ended up in a block, push him out
+    if (place_meeting(x,y,objBlock)) {
+        var _l=0,_r=0,_u=0,_d=0;
+        while (place_meeting(x-_l,y,objBlock) && _l<4) _l++;
+        while (place_meeting(x+_r,y,objBlock) && _r<4) _r++;
+        while (place_meeting(x,y-_u,objBlock) && _u<4) _u++;
+        while (place_meeting(x,y+_d,objBlock) && _d<4) _d++;
+        
+        if (_u <= _l && _u <= _r && _u <= _d) objPlayer.y-=_u;
+        if (_d <= _l && _d <= _r && _d <= _u) objPlayer.y+=_d;
+        if (_l <= _u && _l <= _r && _l <= _d) objPlayer.x-=_l;
+        if (_r <= _l && _r <= _d && _r <= _u) objPlayer.x+=_r;
+    }
+    /*
+    switch (new_grav) {
+    case G_DOWN : y=ceil (y)-1; if (place_meeting(x,y,objBlock)) y+=1; break;
+    case G_UP   : y=floor(y)+1; if (place_meeting(x,y,objBlock)) y-=1; break;
+    case G_LEFT : x=floor(x)+1; if (place_meeting(x,y,objBlock)) x-=1; break;
+    case G_RIGHT: x=ceil (x)-1; if (place_meeting(x,y,objBlock)) x+=1; break;
+    }*/
     //y += 4 * global.grav; //not sure what to do with this piece yet
 }

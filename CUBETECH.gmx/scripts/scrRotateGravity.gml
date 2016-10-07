@@ -33,8 +33,8 @@ case G_RIGHT:
     break;
 }
 
-show_debug_message("gravity in: "+string(argument0));
-show_debug_message("rotate: "+string(amount));
-show_debug_message("gravity out: "+string(result));
+//show_debug_message("gravity in: "+string(argument0));
+//show_debug_message("rotate: "+string(amount));
+//show_debug_message("gravity out: "+string(result));
 
 return result;

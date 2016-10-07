@@ -59,7 +59,7 @@ switch_dir=sdir.UP;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (other.x&lt;x+xrel) {
+            <string>if (other.x&lt;x+xrel &amp;&amp; !objCubeWorld.switching) {
     switch_y=other.y-(y+yrel);
     switch_x=other.x-(x+xrel);
     if (invert_x) switch_x=sprite_width-switch_x;
@@ -67,7 +67,6 @@ switch_dir=sdir.UP;
     other.y=target_y-switch_x
     other.x=target_x+switch_y;
     scrSetGrav(scrRotateGravity(global.grav,90));
-    show_debug_message("switch: ("+string(switch_x)+","+string(switch_y)+")")
 }
 </string>
           </argument>
