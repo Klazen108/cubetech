@@ -34,7 +34,9 @@ else
     bulletDir = 1;
 
 //set the bullet's speed
-hspeed = bulletDir * 16;
+speed = bulletDir * 16;
+direction = 0;
+if !isVGrav() direction = -90;
 
 alarm[0] = 40;
 </string>

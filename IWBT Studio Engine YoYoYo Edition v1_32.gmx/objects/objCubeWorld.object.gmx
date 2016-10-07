@@ -199,6 +199,41 @@ else if (objPlayer.x&gt;=608 &amp;&amp; objPlayer.x&lt;1216) {
 else if (objPlayer.x&gt;=1216 &amp;&amp; objPlayer.x&lt;1824) current_view=cview.C;
 else if (objPlayer.x&gt;=1824) current_view=cview.D;
 
+switch (global.grav) {
+    case G_DOWN: m_initial=matrix_build(0,0,0,0,0,0,1,1,1);
+    case G_UP: m_initial=matrix_build(0,0,0,0,0,180,1,1,1);
+    case G_LEFT: m_initial=matrix_build(0,0,0,0,0,90,1,1,1);
+    case G_RIGHT: m_initial=matrix_build(0,0,0,0,0,270,1,1,1);
+}
+switch (current_view) {
+    case cview.A:
+        m_initial=matrix_multiply(matrix_build(0,0,0,0,0,0,1,1,1),m_initial);
+        show_debug_message("intial: A");
+        break;
+    case cview.B:
+        m_initial=matrix_multiply(matrix_build(0,0,0,0,-90,0,1,1,1),m_initial);
+        show_debug_message("intial: B");
+        break;
+    case cview.C:
+        m_initial=matrix_multiply(matrix_build(0,0,0,0,-180,0,1,1,1),m_initial);
+        show_debug_message("intial: C");
+        break;
+    case cview.D:
+        m_initial=matrix_multiply(matrix_build(0,0,0,0,-270,0,1,1,1),m_initial);
+        show_debug_message("intial: D");
+        break;
+    case cview.E:
+        m_initial=matrix_multiply(matrix_build(0,0,0,0,-90,0,1,1,1),m_initial);
+        m_initial=matrix_multiply(matrix_build(0,0,0,0,0,90,1,1,1),m_initial);
+        show_debug_message("intial: E");
+        break;
+    case cview.F:
+        m_initial=matrix_multiply(matrix_build(0,0,0,0,-90,0,1,1,1),m_initial);
+        m_initial=matrix_multiply(matrix_build(0,0,0,0,0,-90,1,1,1),m_initial);
+        show_debug_message("intial: F");
+        break;
+}
+
 xrot=0;
 yrot=0;
 zrot=0;
@@ -255,6 +290,8 @@ d3d_transform_set_identity();
 
 if (!m_view_set) {
     m_view=matrix_get(matrix_world);
+    m_view = matrix_multiply(m_initial,m_view);
+    
     m_view_show=m_view;
     m_view_set=true;
 }

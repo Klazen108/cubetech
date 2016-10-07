@@ -27,9 +27,17 @@
             <kind>1</kind>
             <string>frozen = false; //sets if the player can move or not
 
-jump = 8.5 * global.grav; //set how fast the player jumps
-jump2 = 7 * global.grav; //sets how fast the player double jumps
-gravity = 0.4 * global.grav; //player gravity
+if isVGrav() {
+    jump = 8.5 * global.grav; //set how fast the player jumps
+    jump2 = 7 * global.grav; //sets how fast the player double jumps
+    gravity = 0.4 * global.grav; //player gravity
+    gravity_direction=270;
+} else {
+    jump = 8.5 * global.grav/2; //set how fast the player jumps
+    jump2 = 7 * global.grav/2; //sets how fast the player double jumps
+    gravity = 0.4 * global.grav/2; //player gravity
+    gravity_direction=0;
+}
 
 djump = 1; //allow the player to double jump as soon as he spawns
 maxSpeed = 3;   //max horizontal speed
