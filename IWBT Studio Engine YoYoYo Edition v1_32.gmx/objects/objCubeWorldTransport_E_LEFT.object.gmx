@@ -33,7 +33,7 @@ target_x=0;
 target_y=0;
 
 
-invert_x=true;
+invert_x=false;
 target_x=32;
 target_y=608;
 switch_dir=sdir.UP;
@@ -64,10 +64,10 @@ switch_dir=sdir.UP;
     switch_x=other.x-(x+xrel);
     if (invert_x) switch_x=sprite_width-switch_x;
     if (invert_y) switch_y=sprite_height-switch_y;
-    other.y=target_y+switch_x
+    other.y=target_y-switch_x
     other.x=target_x+switch_y;
     scrSetGrav(scrRotateGravity(global.grav,90));
-    show_debug_message("("+string(other.x)+","+string(other.y)+")")
+    show_debug_message("switch: ("+string(switch_x)+","+string(switch_y)+")")
 }
 </string>
           </argument>
