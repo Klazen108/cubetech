@@ -200,10 +200,10 @@ else if (objPlayer.x&gt;=1216 &amp;&amp; objPlayer.x&lt;1824) current_view=cview
 else if (objPlayer.x&gt;=1824) current_view=cview.D;
 
 switch (global.grav) {
-    case G_DOWN: m_initial=matrix_build(0,0,0,0,0,0,1,1,1);
-    case G_UP: m_initial=matrix_build(0,0,0,0,0,180,1,1,1);
-    case G_LEFT: m_initial=matrix_build(0,0,0,0,0,90,1,1,1);
-    case G_RIGHT: m_initial=matrix_build(0,0,0,0,0,270,1,1,1);
+    case G_DOWN: m_initial=matrix_build(0,0,0,0,0,0,1,1,1); break;
+    case G_UP: m_initial=matrix_build(0,0,0,0,0,180,1,1,1); break;
+    case G_LEFT: m_initial=matrix_build(0,0,0,0,0,270,1,1,1); break;
+    case G_RIGHT: m_initial=matrix_build(0,0,0,0,0,90,1,1,1); break;
 }
 switch (current_view) {
     case cview.A:
