@@ -85,8 +85,8 @@ if (current_view != next_view) {
         break;
     case cview.F:
         switch (next_view) {
-        case cview.A: xrot=-90; break;
-        case cview.C: xrot=90; break;
+        case cview.A: xrot=90; break;
+        case cview.C: xrot=-90; break;
         case cview.B: zrot=90; break;
         case cview.D: zrot=-90; break;
         }

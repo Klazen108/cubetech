@@ -301,6 +301,12 @@
     <object>objects\objCubeWorldTransport_C_TOP</object>
     <object>objects\objCubeWorldTransport_E_LEFT</object>
     <object>objects\objCubeWorldTransport_A_TOP</object>
+    <object>objects\objCubeWorldTransport_F_BOTTOM</object>
+    <object>objects\objCubeWorldTransport_D_BOTTOM</object>
+    <object>objects\objCubeWorldTransport_F_RIGHT</object>
+    <object>objects\objCubeWorldTransport_C_BOTTOM</object>
+    <object>objects\objCubeWorldTransport_F_LEFT</object>
+    <object>objects\objCubeWorldTransport_A_BOTTOM</object>
   </objects>
   <rooms name="rooms">
     <rooms name="init">
