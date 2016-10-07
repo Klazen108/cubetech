@@ -236,6 +236,44 @@
     <instance objName="objSave" x="1024" y="448" name="inst_FFF0D687" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSave" x="864" y="1408" name="inst_6ED82461" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSave" x="2112" y="1120" name="inst_457C884B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objGravityDown" x="96" y="1088" name="inst_99363A52" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objGravityUp" x="192" y="1088" name="inst_37DCD9E5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objJumpRefresher" x="1120" y="960" name="inst_50388841" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objJumpRefresher" x="992" y="768" name="inst_CE2C0CB1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objJumpRefresher" x="928" y="384" name="inst_9CFB2667" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objJumpRefresher" x="1088" y="192" name="inst_43B53B3F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objJumpRefresher" x="1440" y="1056" name="inst_31EEBB9A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objJumpRefresher" x="1632" y="992" name="inst_E30EEE98" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objJumpRefresher" x="1504" y="896" name="inst_1495571B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objJumpRefresher" x="1696" y="1088" name="inst_6F2D3501" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objJumpRefresher" x="2176" y="1120" name="inst_059E5822" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objJumpRefresher" x="2304" y="960" name="inst_70DE198C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objJumpRefresher" x="1984" y="864" name="inst_4CE88A2B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objJumpRefresher" x="1088" y="1504" name="inst_99BCE2BD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objJumpRefresher" x="896" y="1664" name="inst_83A08BD8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objJumpRefresher" x="736" y="1344" name="inst_AE4F82D4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objJumpRefresher" x="928" y="1280" name="inst_6DB8C9A1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objJumpRefresher" x="384" y="1088" name="inst_FC2899CC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objJumpRefresher" x="480" y="992" name="inst_7F95F2BA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objJumpRefresher" x="416" y="896" name="inst_F13F5B83" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objJumpRefresher" x="288" y="960" name="inst_6AF7C5E7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objJumpRefresher" x="96" y="832" name="inst_A4BC0646" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objJumpRefresher" x="736" y="928" name="inst_00CD4619" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objJumpRefresher" x="800" y="768" name="inst_CC64C599" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objJumpRefresher" x="736" y="640" name="inst_370BA372" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objJumpRefresher" x="768" y="1056" name="inst_58B723AC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objJumpRefresher" x="1664" y="800" name="inst_716E2788" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objJumpRefresher" x="1792" y="768" name="inst_799F17F9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objJumpRefresher" x="1792" y="928" name="inst_BC00A4C1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objJumpRefresher" x="2240" y="736" name="inst_AF67EF28" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objJumpRefresher" x="2368" y="1088" name="inst_90464AE0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objJumpRefresher" x="384" y="672" name="inst_08834840" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objJumpRefresher" x="704" y="320" name="inst_A9AE7EDA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objJumpRefresher" x="736" y="96" name="inst_FF6B2C12" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objJumpRefresher" x="864" y="224" name="inst_E861712A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objJumpRefresher" x="1152" y="736" name="inst_1FB131BB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objJumpRefresher" x="608" y="960" name="inst_C5DAC1C0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objJumpRefresher" x="704" y="1728" name="inst_F551E033" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bAllTiles" x="160" y="1024" w="32" h="32" xo="32" yo="96" id="10002653" name="inst_EC250A64" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

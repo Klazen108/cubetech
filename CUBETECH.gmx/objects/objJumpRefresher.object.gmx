@@ -71,7 +71,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_yscale = global.grav;
+            <string>switch (global.grav) {
+    case G_DOWN: image_angle=0; break;
+    case G_UP: image_angle=180; break;
+    case G_LEFT: image_angle=270; break;
+    case G_RIGHT: image_angle=90; break;
+}
+//image_yscale = global.grav;
 </string>
           </argument>
         </arguments>

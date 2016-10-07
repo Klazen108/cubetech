@@ -356,6 +356,7 @@ d3d_primitive_end();
 
 d3d_set_culling(false); 
 d3d_set_perspective(false);
+d3d_set_projection_ortho(0,0,800,608,0);
 d3d_end();
 </string>
           </argument>
