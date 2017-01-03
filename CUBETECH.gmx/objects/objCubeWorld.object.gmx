@@ -32,6 +32,8 @@ if (!surface_exists(global.surfD)) global.surfD = surface_create(608,608); view_
 if (!surface_exists(global.surfE)) global.surfE = surface_create(608,608); view_surface_id[4] = global.surfE;
 if (!surface_exists(global.surfF)) global.surfF = surface_create(608,608); view_surface_id[5] = global.surfF;
 
+var next_view = current_view;
+if instance_exists(objPlayer) {
 if (objPlayer.x&lt;=608) next_view=cview.A;
 else if (objPlayer.x&gt;608 &amp;&amp; objPlayer.x&lt;=1216) {
     if (objPlayer.y&lt;608) next_view=cview.E;
@@ -95,6 +97,7 @@ if (current_view != next_view) {
     
     current_view=next_view;
     switching=true;
+}
 }
 
 if (switching) {
