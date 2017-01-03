@@ -68,3 +68,10 @@ randomize();    //make sure the game starts with a random seed for RNG
 
 
 enum sdir { UP,DOWN,LEFT,RIGHT }
+
+global.surfA = noone;
+global.surfB = noone;
+global.surfC = noone;
+global.surfD = noone;
+global.surfE = noone;
+global.surfF = noone;

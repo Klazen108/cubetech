@@ -293,20 +293,21 @@
       <object>objects\objBossIndicator</object>
       <object>objects\objGameClear</object>
     </objects>
-    <object>objects\objCubeWorld</object>
-    <object>objects\object92</object>
-    <object>objects\objCubeWorldTransport_E_TOP</object>
-    <object>objects\objCubeWorldTransport_D_TOP</object>
-    <object>objects\objCubeWorldTransport_E_RIGHT</object>
-    <object>objects\objCubeWorldTransport_C_TOP</object>
-    <object>objects\objCubeWorldTransport_E_LEFT</object>
-    <object>objects\objCubeWorldTransport_A_TOP</object>
-    <object>objects\objCubeWorldTransport_F_BOTTOM</object>
-    <object>objects\objCubeWorldTransport_D_BOTTOM</object>
-    <object>objects\objCubeWorldTransport_F_RIGHT</object>
-    <object>objects\objCubeWorldTransport_C_BOTTOM</object>
-    <object>objects\objCubeWorldTransport_F_LEFT</object>
-    <object>objects\objCubeWorldTransport_A_BOTTOM</object>
+    <objects name="CUBETECH">
+      <object>objects\objCubeWorld</object>
+      <object>objects\objCubeWorldTransport_E_TOP</object>
+      <object>objects\objCubeWorldTransport_D_TOP</object>
+      <object>objects\objCubeWorldTransport_E_RIGHT</object>
+      <object>objects\objCubeWorldTransport_C_TOP</object>
+      <object>objects\objCubeWorldTransport_E_LEFT</object>
+      <object>objects\objCubeWorldTransport_A_TOP</object>
+      <object>objects\objCubeWorldTransport_F_BOTTOM</object>
+      <object>objects\objCubeWorldTransport_D_BOTTOM</object>
+      <object>objects\objCubeWorldTransport_F_RIGHT</object>
+      <object>objects\objCubeWorldTransport_C_BOTTOM</object>
+      <object>objects\objCubeWorldTransport_F_LEFT</object>
+      <object>objects\objCubeWorldTransport_A_BOTTOM</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <rooms name="init">

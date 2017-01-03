@@ -25,12 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (!surface_exists(surfA)) surfA = surface_create(608,608); view_surface_id[0] = surfA;
-if (!surface_exists(surfB)) surfB = surface_create(608,608); view_surface_id[1] = surfB;
-if (!surface_exists(surfC)) surfC = surface_create(608,608); view_surface_id[2] = surfC;
-if (!surface_exists(surfD)) surfD = surface_create(608,608); view_surface_id[3] = surfD;
-if (!surface_exists(surfE)) surfE = surface_create(608,608); view_surface_id[4] = surfE;
-if (!surface_exists(surfF)) surfF = surface_create(608,608); view_surface_id[5] = surfF;
+            <string>if (!surface_exists(global.surfA)) global.surfA = surface_create(608,608); view_surface_id[0] = global.surfA;
+if (!surface_exists(global.surfB)) global.surfB = surface_create(608,608); view_surface_id[1] = global.surfB;
+if (!surface_exists(global.surfC)) global.surfC = surface_create(608,608); view_surface_id[2] = global.surfC;
+if (!surface_exists(global.surfD)) global.surfD = surface_create(608,608); view_surface_id[3] = global.surfD;
+if (!surface_exists(global.surfE)) global.surfE = surface_create(608,608); view_surface_id[4] = global.surfE;
+if (!surface_exists(global.surfF)) global.surfF = surface_create(608,608); view_surface_id[5] = global.surfF;
 
 if (objPlayer.x&lt;=608) next_view=cview.A;
 else if (objPlayer.x&gt;608 &amp;&amp; objPlayer.x&lt;=1216) {
@@ -170,13 +170,6 @@ if (switching &amp;&amp; !hold_player) {
             <string>w=304
 dist=520; //this seems to work
 
-surfA = surface_create(608,608);
-surfB = surface_create(608,608);
-surfC = surface_create(608,608);
-surfD = surface_create(608,608);
-surfE = surface_create(608,608);
-surfF = surface_create(608,608);
-
 z_a=0;
 thetaY=0;
 thetaX=0;
@@ -249,6 +242,13 @@ view_visible[3]=true;
 view_visible[4]=true;
 view_visible[5]=true;
 view_visible[6]=false; //debug view
+
+if (!surface_exists(global.surfA)) global.surfA = surface_create(608,608); view_surface_id[0] = global.surfA;
+if (!surface_exists(global.surfB)) global.surfB = surface_create(608,608); view_surface_id[1] = global.surfB;
+if (!surface_exists(global.surfC)) global.surfC = surface_create(608,608); view_surface_id[2] = global.surfC;
+if (!surface_exists(global.surfD)) global.surfD = surface_create(608,608); view_surface_id[3] = global.surfD;
+if (!surface_exists(global.surfE)) global.surfE = surface_create(608,608); view_surface_id[4] = global.surfE;
+if (!surface_exists(global.surfF)) global.surfF = surface_create(608,608); view_surface_id[5] = global.surfF;
 </string>
           </argument>
         </arguments>
@@ -305,7 +305,7 @@ var d=w/2;
 //z = - out, + in
 
 //A
-d3d_primitive_begin_texture(pr_trianglefan,surface_get_texture(surfA));
+d3d_primitive_begin_texture(pr_trianglefan,surface_get_texture(global.surfA));
 d3d_vertex_normal_texture(-d,+d,-d,0,0,-1,0,0);
 d3d_vertex_normal_texture(+d,+d,-d,0,0,-1,1,0);
 d3d_vertex_normal_texture(+d,-d,-d,0,0,-1,1,1);
@@ -313,7 +313,7 @@ d3d_vertex_normal_texture(-d,-d,-d,0,0,-1,0,1);
 d3d_primitive_end();
 
 //B
-d3d_primitive_begin_texture(pr_trianglefan,surface_get_texture(surfB));
+d3d_primitive_begin_texture(pr_trianglefan,surface_get_texture(global.surfB));
 d3d_vertex_normal_texture(+d,+d,-d,1,0,0,0,0);
 d3d_vertex_normal_texture(+d,+d,+d,1,0,0,1,0);
 d3d_vertex_normal_texture(+d,-d,+d,1,0,0,1,1);
@@ -321,7 +321,7 @@ d3d_vertex_normal_texture(+d,-d,-d,1,0,0,0,1);
 d3d_primitive_end();
 
 //C
-d3d_primitive_begin_texture(pr_trianglefan,surface_get_texture(surfC));
+d3d_primitive_begin_texture(pr_trianglefan,surface_get_texture(global.surfC));
 d3d_vertex_normal_texture(+d,+d,+d,0,0,1,0,0);
 d3d_vertex_normal_texture(-d,+d,+d,0,0,1,1,0);
 d3d_vertex_normal_texture(-d,-d,+d,0,0,1,1,1);
@@ -329,7 +329,7 @@ d3d_vertex_normal_texture(+d,-d,+d,0,0,1,0,1);
 d3d_primitive_end();
 
 //D
-d3d_primitive_begin_texture(pr_trianglefan,surface_get_texture(surfD));
+d3d_primitive_begin_texture(pr_trianglefan,surface_get_texture(global.surfD));
 d3d_vertex_normal_texture(-d,+d,+d,-1,0,0,0,0);
 d3d_vertex_normal_texture(-d,+d,-d,-1,0,0,1,0);
 d3d_vertex_normal_texture(-d,-d,-d,-1,0,0,1,1);
@@ -337,7 +337,7 @@ d3d_vertex_normal_texture(-d,-d,+d,-1,0,0,0,1);
 d3d_primitive_end();
 
 //E
-d3d_primitive_begin_texture(pr_trianglefan,surface_get_texture(surfE));
+d3d_primitive_begin_texture(pr_trianglefan,surface_get_texture(global.surfE));
 d3d_vertex_normal_texture(-d,+d,-d,0,1,0,0,0);
 d3d_vertex_normal_texture(-d,+d,+d,0,1,0,1,0);
 d3d_vertex_normal_texture(+d,+d,+d,0,1,0,1,1);
@@ -345,7 +345,7 @@ d3d_vertex_normal_texture(+d,+d,-d,0,1,0,0,1);
 d3d_primitive_end();
 
 //F
-d3d_primitive_begin_texture(pr_trianglefan,surface_get_texture(surfF));
+d3d_primitive_begin_texture(pr_trianglefan,surface_get_texture(global.surfF));
 d3d_vertex_normal_texture(+d,-d,-d,0,-1,0,0,0);
 d3d_vertex_normal_texture(+d,-d,+d,0,-1,0,1,0);
 d3d_vertex_normal_texture(-d,-d,+d,0,-1,0,1,1);
